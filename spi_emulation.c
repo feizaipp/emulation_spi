@@ -64,28 +64,6 @@ static void cs_enable(int enable)
 	}
 }
 
-/*
-static void cs_enable(int enable)
-{
-	if (enable) {
-		*gpio_dout11 &= ~(1<<9);	
-	} else {
-		*gpio_dout11 |= (1<<9);	
-	}
-}
-*/
-
-/*
-static void cs_enable(int enable)
-{
-	if (enable) {
-		mt_set_simulate_dout(gpio_dout11, 9, 0);
-	} else {
-		mt_set_simulate_dout(gpio_dout11, 9, 1);
-	}
-}
-*/
-
 static int spi_simulate_setup (struct spi_device *spidev)
 {
 	struct spi_master *master;
