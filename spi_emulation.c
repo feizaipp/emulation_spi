@@ -1,5 +1,5 @@
 /* 
- *	Author:zongpeng
+ *	Author:feizaipp
  *	simulate spi for mtk
  *	spi_simulate.c
  */
@@ -149,56 +149,6 @@ static unsigned char spi_readwrite(unsigned char buf)
 	}
 	return val;
 }
-
-/*
-static unsigned char spi_readwrite(unsigned char buf)
-{
-	unsigned char i, val;
-	unsigned short bit;
-
-	val = 0;
-	bit = 0;
-	for (i=0; i<8; i++) {
-		if (buf & 0x80) {
-			*gpio_dout11 |= (1<<8);
-		} else {
-			*gpio_dout11 &= ~(1<<8);
-		}
-		buf <<= 1;
-		*gpio_dout11 &= ~(1<<6);
-		*gpio_dout11 |= (1<<6);
-		val <<= 1;
-		bit = *gpio_din11 & (1<<7);
-		bit >>= 7;
-		val |= bit;
-	}
-	return val;
-}
-*/
-
-/*
-static unsigned char spi_readwrite(unsigned char buf)
-{
-	unsigned char i, val, bit;
-
-	val = 0;
-	bit = 0;
-	for (i=0; i<8; i++) {
-		if (buf & 0x80) {
-			mt_set_simulate_dout(gpio_dout11, 8, 1);
-		} else {
-			mt_set_simulate_dout(gpio_dout11, 8, 0);
-		}
-		buf <<= 1;
-		mt_set_simulate_dout(gpio_dout11, 6, 0);
-		mt_set_simulate_dout(gpio_dout11, 6, 1);
-		val <<= 1;
-		bit = mt_get_simulate_din(gpio_din11, 7);
-		val |= bit;
-	}
-	return val;
-}
-*/
 
 static void spi_simulate_transfer_bytes(unsigned char *tx_buf, unsigned char *rx_buf, int len)
 {
@@ -467,5 +417,5 @@ static void __init spi_simulate_exit(void)
 module_init(spi_simulate_init);
 module_exit(spi_simulate_exit);
 MODULE_DESCRIPTION ( "simulate SPI Controller driver for mtk" );
-MODULE_AUTHOR ( "zongpeng <zongpeng@xdja.com>" );
+MODULE_AUTHOR ( "feizaipp <zpehome@yeah.net>" );
 MODULE_LICENSE ( "GPL" );
